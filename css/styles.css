@@ -12,13 +12,13 @@ body {
 
 .profile {
   width: min(87%, 384px);
-  margin: 2.25rem 0;
   padding: 2.5rem;
   border-radius: 0.75rem;
   background: hsl(0, 0%, 12%);
-  position: relative;
+  position: absolute;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%);
+  transform: translate(-50%, -50%);
 }
 .profile .info {
   text-align: center;
@@ -90,5 +90,8 @@ body {
   .profile {
     margin: 7.25rem 0;
     padding: 1.5rem;
+    position: relative;
+    top: 50%;
+    transform: translate(-50%);
   }
 }/*# sourceMappingURL=styles.css.map */
