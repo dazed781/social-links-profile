@@ -7,7 +7,11 @@
 }
 
 body {
+  min-height: 100vh;
   background: hsl(0, 0%, 8%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .profile {
@@ -15,10 +19,6 @@ body {
   padding: 2.5rem;
   border-radius: 0.75rem;
   background: hsl(0, 0%, 12%);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 .profile .info {
   text-align: center;
@@ -88,10 +88,7 @@ body {
 
 @media (max-width: 375px) {
   .profile {
-    margin: 7.25rem 0;
+    margin: 4rem 0;
     padding: 1.5rem;
-    position: relative;
-    top: 50%;
-    transform: translate(-50%);
   }
 }/*# sourceMappingURL=styles.css.map */

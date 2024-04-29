@@ -1,114 +1,147 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@100..900&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-$darkColor: hsl(0, 0%, 8%);
-$profileBg: hsl(0, 0%, 12%);
-$lightColor: hsl(0, 0%, 100%);
-$btnColor: hsl(0, 0%, 20%);
-$accent: hsl(75, 94%, 57%);
+$mainBg: hsl(275, 100%, 97%);
+$cardBg: hsl(0, 0%, 100%);
+$boldColor: hsl(292, 42%, 14%);
+$textColor: hsl(292, 16%, 49%);
 
 body {
-    background: $darkColor;
+  background: url(../images/background-pattern-desktop.svg) no-repeat fixed,
+    $mainBg;
+  background-size: contain;
+  font-family: "Work Sans", sans-serif;
 }
 
-.profile {
-    width: min(87%, 384px);
-    padding: 2.5rem;
-    border-radius: 0.75rem;
-    background: $profileBg;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+ul {
+  list-style: none;
+}
 
-    .info {
-        text-align: center;
+main {
+  width: min(87%, 600px);
+  margin: 10.5rem 0;
+  padding: 2.475rem 2.5rem 0rem;
+  border-radius: 1rem;
+  background: $cardBg;
+  box-shadow: 0 30px 40px 6px hsla(292, 16%, 49%, 0.15);
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
 
-        .profile-pic {
-            width: 88px;
-            height: 88px;
-            margin: 0 auto 1.725rem;
-            border-radius: 50%;
+  .header {
+    color: $boldColor;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+    }
+  }
+
+  .faqs-list {
+    padding: 0.6rem 0 1rem;
+
+    .accordion {
+      display: grid;
+      grid-template-rows: 0fr;
+      padding: 1.455rem 0;
+      $borderColor: $mainBg;
+      border-bottom: 2px solid $borderColor;
+
+      &:first-child {
+        .accordion-header {
+          padding-top: 0;
+        }
+      }
+
+      &:last-child {
+        border-bottom: none;
+
+        .accordion-header {
+          padding-bottom: 0;
+        }
+      }
+
+      &.active .answer {
+        display: block;
+      }
+
+      .accordion-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+
+        .question {
+          padding-right: 1.75rem;
+          font-size: clamp(1rem, 4vw, 1.125rem);
+          color: $boldColor;
+          font-weight: 600;
+
+          &:hover {
+            color: #ad28eb;
+          }
+        }
+
+        .minus-icon,
+        .plus-icon {
+          display: none;
+
+          &.active {
             display: block;
+          }
         }
+      }
 
-        h1 {
-            margin-bottom: 0.575rem;
-            font-size: 1.5rem;
-            color: $lightColor;
-            font-weight: 600;
-        }
-
-        .location {
-            margin-bottom: 1.75rem;
-            font-size: 0.885rem;
-            color: $accent;
-            font-weight: 600;
-        }
-
-        .bio {
-            color: $lightColor;
-            font-size: 0.885rem;
-            font-weight: 400;
-            letter-spacing: -0.1px;
-        }
+      .answer {
+        padding-top: 1.4rem;
+        display: none;
+        color: $textColor;
+        line-height: 1.5;
+      }
     }
-
-    .socials {
-        margin-top: 1.6rem;
-        display: grid;
-        gap: 0.915rem;
-
-        .links {
-            width: 100%;
-            padding: 0.9rem;
-            border-radius: 0.5rem;
-            background: $btnColor;
-            font-size: 0.9rem;
-            color: $lightColor;
-            font-weight: 600;
-            text-align: center;
-            text-decoration: none;
-            transition: 0.2s ease 0.1s; // for text
-            position: relative;
-            z-index: 1;
-
-            &::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                right: 0;
-                border-radius: 0.5rem;
-                background: $accent;
-                z-index: -1;
-                transition: transform 0.4s; // for background
-                transform: scaleX(0);
-                transform-origin: left;
-            }
-
-            &:hover,
-            &:hover::before {
-                transform: scaleX(1);
-                color: $darkColor;
-            }
-        }
-    }
+  }
 }
 
 @media (max-width: 375px) {
-    .profile {
-        margin: 7.25rem 0;
-        padding: 1.5rem;
-        position: relative;
-        top: 50%;
-        transform: translate(-50%);
+  body {
+    background: url(../images/background-pattern-mobile.svg) no-repeat fixed,
+    $mainBg;
+    background-size: contain;
+  }
+
+  main {
+    margin: 8.95rem 0;
+    padding: 1.5rem 1.475rem;
+    border-radius: 0.5rem;
+
+    .header {
+      img {
+        width: 24px;
+      }
     }
+
+    .faqs-list {
+      padding: 0.3rem 0 0.05rem;
+
+      .accordion {
+        padding: 1.2rem 0;
+
+        &:last-child {
+          padding-bottom: 0;
+        }
+
+        .answer {
+          padding-top: 1.5rem;
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }
 }
